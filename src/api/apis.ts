@@ -1,6 +1,7 @@
 import http from "./index";
-import {LoginData} from "../model";
+import {IndexInfo} from "../model";
 
-export function login(userName: string, password: string) {
-  return http.post<LoginData>('login', {username: userName, password: password})
+
+export function getIndexInfo() {
+  return http.get<IndexInfo>('/api/v1/index-infos')
 }

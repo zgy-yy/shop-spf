@@ -1,7 +1,8 @@
 import {axios, AxiosRequestConfig} from 'taro-axios'
 import Taro from "@tarojs/taro";
 
-axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/';
+//http://127.0.0.1:28019/swagger-ui/index.html
+axios.defaults.baseURL = 'http://127.0.0.1:28019';
 axios.defaults.timeout = 20 * 1000;
 axios.defaults.withCredentials = true
 

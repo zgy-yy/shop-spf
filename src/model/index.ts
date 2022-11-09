@@ -1,8 +1,19 @@
-export interface LoginData{
-  email: string
-  id: number
-  mobile: string
-  rid: number
-  token: string
-  username: string
+export interface Good {
+  goodsCoverImg: string
+  goodsId: number
+  goodsIntro: string
+  goodsName: string
+  sellingPrice: number
+  tag: string
+}
+
+
+export interface IndexInfo {
+  carousels: Array<{
+    carouselUrl: string
+    redirectUrl: string
+  }>,
+  hotGoodses: Good[],
+  newGoodses: Good[],
+  recommendGoodses: Good[]
 }

@@ -10,11 +10,12 @@
 import {ref} from 'vue'
 import './index.scss'
 import CuCustom from "../../colorui/components/cu-custom.vue";
+import {getIndexInfo} from "../../api/apis";
 
 
 const msg = ref('Hello world')
-// const token=Taro.getStorageSync('token')
-// login('admin', '123456').then(res => {
-//   Taro.setStorageSync('token',res.token)
-// })
+
+getIndexInfo().then(res => {
+  console.log(res)
+})
 </script>

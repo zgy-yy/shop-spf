@@ -3,6 +3,7 @@ import {computed} from "vue";
 import {useStatusBar} from "../../store/statusBar";
 import Taro from "@tarojs/taro";
 
+
 const props = defineProps<{ bgColor?: string, isBack?: boolean, bgImage?: string }>()
 const Bar = useStatusBar()
 const StatusBar: number = Bar.StatusBar
@@ -15,18 +16,10 @@ const style = computed(() => {
   }
   return style
 })
-// /*    BackPage() {
-//       if (getCurrentPages().length < 2 && 'undefined' !== typeof __wxConfig) {
-//         let url = '/' + __wxConfig.pages[0]
-//         return uni.redirectTo({url})
-//       }
-//       uni.navigateBack({
-//         delta: 1
-//       });
-//     }
-// * */
+
 function BackPage() {
-  console.log(Taro.getCurrentPages().length)
+  // console.log(Taro.getCurrentPages().length)
+  Taro.navigateBack()
 }
 
 </script>
@@ -49,5 +42,4 @@ function BackPage() {
 </template>
 
 <style>
-
 </style>

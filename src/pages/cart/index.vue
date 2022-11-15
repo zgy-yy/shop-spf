@@ -1,11 +1,21 @@
+<script lang="ts" setup>
+import {ref} from 'vue'
+import {getCategories} from "../../api/apis";
+import CuCustom from "../../colorui/components/cu-custom.vue";
+
+const msg = ref('hello-page')
+
+</script>
 <template>
   <view class="index">
-    <text>{{ msg }}</text>
+   <cu-custom bg-color="bg-white">
+     <template #content>
+       <view>购物车</view>
+     </template>
+   </cu-custom>
   </view>
 </template>
 
-<script lang="ts" setup>
-import {ref} from 'vue'
+<style lang="scss" scoped>
 
-const msg = ref('hello-page')
-</script>
+</style>

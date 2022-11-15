@@ -3,7 +3,9 @@ export default defineAppConfig({
     'pages/index/index',
     'pages/cate/index',
     'pages/cart/index',
-    'pages/my/index'
+    'pages/my/index',
+    'pages/login/index',
+    'pages/goodsDetail/index'
   ],
   window: {
     backgroundTextStyle: 'light',

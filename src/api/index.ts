@@ -2,7 +2,7 @@ import {axios, AxiosRequestConfig} from 'taro-axios'
 import Taro from "@tarojs/taro";
 
 //http://127.0.0.1:28019/swagger-ui/index.html
-axios.defaults.baseURL = 'http://127.0.0.1:28019';
+axios.defaults.baseURL = 'http://backend-api-01.newbee.ltd/api/v1';
 axios.defaults.timeout = 20 * 1000;
 axios.defaults.withCredentials = true
 
@@ -13,7 +13,7 @@ axios.interceptors.request.use(
       ...config.params
     }
     const token = Taro.getStorageSync('token')
-    config.headers.Authorization = token == undefined ? '' : token
+    config.headers.token = token == undefined ? '' : token
     return config;
   },
   function (error) {
@@ -22,7 +22,7 @@ axios.interceptors.request.use(
 );
 axios.interceptors.response.use(
   (response) => {
-    return response.data;
+    return response;
   },
   function (error) {
     return Promise.reject(error);
@@ -40,7 +40,7 @@ const http: Http = {
   post<T>(url: string, data?: unknown): Promise<T> {
     return new Promise((resolve, reject) => {
       axios
-        .post(url, data,{})
+        .post(url, data, {})
         .then((res) => {
           resolve(res.data);
         })

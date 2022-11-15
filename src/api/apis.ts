@@ -1,5 +1,5 @@
 import http from "./index";
-import {CateData, GoodsDetail, IndexInfo} from "../model";
+import {CateData, GoodsCartItem, GoodsDetail, IndexInfo} from "../model";
 import {useGoodsInfo} from "../store/goodsInfo";
 
 
@@ -33,8 +33,8 @@ export function userLogin(name: string, password: string) {
     return http.post<ResponseData<string>>('user/login', {
       loginName: name,
       passwordMd5: password
-    }).then(res=>{
-      if (res.resultCode==200){
+    }).then(res => {
+      if (res.resultCode == 200) {
         resolve(res.data)
       }
       reject('登录失败！')
@@ -42,22 +42,49 @@ export function userLogin(name: string, password: string) {
   });
 
 }
+
 export function userRegister(name: string, password: string) {
   return new Promise((resolve, reject) => {
     return http.post<ResponseData<string>>('user/register', {
       loginName: name,
       password: password
-    }).then(res=>{
-      if (res.resultCode==200){
+    }).then(res => {
+      if (res.resultCode == 200) {
         resolve(res.data)
       }
-      if (res.resultCode==500){
+      if (res.resultCode == 500) {
         reject('用户名已存在！')
       }
     })
   });
 }
 
-export function  getCategories(){
+export function getCategories() {
   return http.get<ResponseData<CateData[]>>('categories')
+}
+
+export function addCartItem(id: number, count: number) {
+  return http.post('shop-cart', {
+    goodsCount: count,
+    goodsId: id
+  })
+}
+
+export function getCartGoods(){
+  return http.get<ResponseData<GoodsCartItem[]>>('shop-cart').then(res=>{
+    return res.data
+  })
+}
+
+export function changeCount(id: number, count: number){
+  return http.put('shop-cart', {
+    cartItemId: id,
+    goodsCount: count
+  })
+}
+
+export function deleteCartId(id:number){
+  return http.delete<ResponseData<any>>('shop-cart/'+id).then(res=>{
+    return res.data
+  })
 }

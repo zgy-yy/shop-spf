@@ -30,6 +30,7 @@ export interface GoodsDetail {
   goodsDetailContent: string
 }
 
+
 export interface Cat {
   categoryId: 0,
   categoryLevel: string,
@@ -47,4 +48,13 @@ export interface CateData {
     parentId: number,
     thirdLevelCategoryVOS: Cat[]
   }[]
+}
+
+export interface GoodsCartItem{
+  cartItemId: number
+  goodsCount: number
+  goodsCoverImg: string
+  goodsId: number
+  goodsName: string
+  sellingPrice: number
 }

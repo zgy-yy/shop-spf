@@ -1,11 +1,15 @@
 <script lang="ts" setup>
 import {ref} from 'vue'
 import CuCustom from "../../colorui/components/cu-custom.vue";
-import {getGoodsDetail} from "../../api/apis";
+import {addCartItem, getGoodsDetail} from "../../api/apis";
 import {useGoodsInfo} from "../../store/goodsInfo";
 
 const goodInfo = useGoodsInfo()
-
+function addGoods(){
+  addCartItem(goodInfo.info.goodsId,1).then(res=>{
+    console.log(res)
+  })
+}
 </script>
 
 <template>
@@ -38,17 +42,17 @@ const goodInfo = useGoodsInfo()
     <view class="m-bar cu-bar bg-white tabbar border shop">
       <button class="action" open-type="contact">
         <view class="cuIcon-service text-green">
-          <view class="cu-tag badge"></view>
+<!--          <view class="cu-tag badge"></view>-->
         </view>
         客服
       </button>
       <view class="action">
         <view class="cuIcon-cart">
-          <view class="cu-tag badge">99</view>
+          <view class="cu-tag badge">9</view>
         </view>
         购物车
       </view>
-      <view class="bg-orange submit">加入购物车</view>
+      <view class="bg-orange submit" @tap="addGoods">加入购物车</view>
       <view class="bg-red submit">立即订购</view>
     </view>
 

@@ -43,10 +43,7 @@ function onChange(e) {
 
     <view class="m-total">
       <radio-group @change="onChange">
-        <checkbox-group class="cu-form-group" @change="changeCheck">
-          <checkbox  class="round blue m-check" :value="isCheck" ></checkbox>
-        </checkbox-group>
-        <checkbox class="m-radio " :value="checkValue.value" :checked="checkValue.checked">
+        <checkbox class="m-radio" :value="checkValue.value" :checked="checkValue.checked">
           <text>全选</text>
         </checkbox>
       </radio-group>

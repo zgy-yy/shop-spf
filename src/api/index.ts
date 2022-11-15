@@ -34,9 +34,37 @@ interface Http {
   get<T>(url: string, params?: unknown): Promise<T>;
 
   post<T>(url: string, data?: unknown): Promise<T>;
+
+  put<T>(url: string, data?: unknown): Promise<T>;
+
+  delete<T>(url: string, params?: unknown): Promise<T>;
 }
 
 const http: Http = {
+  delete<T>(url: string, params?: unknown): Promise<T> {
+    return new Promise((resolve, reject) => {
+      axios
+        .delete(url, {params})
+        .then((res) => {
+          resolve(res.data);
+        })
+        .catch((err) => {
+          reject(err.data);
+        });
+    });
+  },
+  put<T>(url: string, data?: unknown): Promise<T> {
+    return new Promise((resolve, reject) => {
+      axios
+        .put(url, data, {})
+        .then((res) => {
+          resolve(res.data);
+        })
+        .catch((err) => {
+          reject(err.data);
+        });
+    });
+  },
   post<T>(url: string, data?: unknown): Promise<T> {
     return new Promise((resolve, reject) => {
       axios
